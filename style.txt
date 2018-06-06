@@ -1,0 +1,100 @@
+# ヘッダー
+string,110mm,245mm,$date,font_size=9
+string,5mm,247mm,履　歴　書,font_size=14,font_face=gothic
+
+# 写真
+box,145mm,204mm,30mm,40mm,line_style=dashed
+string,148mm,240mm,写真を貼る位置,font_size=9
+string,147mm,233mm,1. 縦36〜40 mm,font_size=8
+string,150mm,230mm,横24〜30 mm,font_size=8
+string,147mm,227mm,2. 本人単身胸から上,font_size=8
+string,147mm,224mm,3. 裏面にのりづけ,font_size=8
+string,147mm,221mm,4. 裏面に氏名記入,font_size=8
+photo,145mm,244mm,30mm,40mm
+lines,6,0mm,240mm,139mm,0mm,0mm,-41mm,38mm,0mm,0mm,-53mm,-177mm,0mm,line_width=2.0,close=true
+line,0,233mm,139mm,0,line_style=dashed
+string,2mm,238mm,ふりがな,font_size=9
+string,30mm,238mm,$name_kana,font_size=9
+string,2mm,231mm,氏　　名,font_size=9
+string,30mm,231mm,$name,font_size=14
+line,0,218mm,139mm,0mm
+line,15mm,218mm,0,-13mm
+string,1.5mm,217mm,生年月日,font_size=9
+string,30mm,213mm,$birth_day,font_size=12
+line,110mm,218mm,0mm,-13mm
+string,121mm,214mm,$gender,font_size=12
+line,21mm,205mm,0,-6mm,line_style=dashed
+string,1.5mm,203.5mm,携帯電話番号,font_size=9
+line,0,205mm,139mm,0mm
+string,25mm,203.5mm,$cell_phone,font_size=9
+line,56mm,205mm,0mm,-6mm
+line,69mm,205mm,0mm,-6mm,line_style=dashed
+string,57mm,204mm,E-MAIL,font_size=9
+string,75mm,204mm,$email,font_size=9
+line,0,205mm,139mm,0mm
+line,0,199mm,139mm,0mm
+line,0,192mm,139mm,0,line_style=dashed
+line,0,173mm,177mm,0
+line,0,166mm,139mm,0,line_style=dashed
+line,139mm,199mm,0mm,-53mm
+line,139mm,186mm,38mm,0mm,line_style=dashed
+string,141mm,198mm,電話,font_size=9
+string,143mm,192mm,$tel,font_size=9
+string,141mm,185mm,FAX,font_size=9
+string,143mm,179mm,$fax,font_size=9
+string,141mm,172mm,電話,font_size=9
+string,143mm,166mm,$tel2,font_size=9
+string,141mm,159mm,FAX,font_size=9
+string,143mm,153mm,$fax2,font_size=9
+line,139mm,160mm,38mm,0mm,line_style=dashed
+string,2mm,197mm,ふりがな,font_size=9
+string,20mm,197mm,$address_kana,font_size=9
+string,2mm,191mm,現住所 〒,font_size=9
+string,15mm,191mm,$address_zip,font_size=9
+string,15mm,185mm,$address,font_size=12
+string,2mm,171mm,ふりがな,font_size=9
+string,20mm,171mm,$address_kana2,font_size=9
+string,2mm,165mm,連絡先 〒,font_size=9
+string,15mm,165mm,$address_zip2,font_size=9
+string,15mm,159mm,$address2,font_size=12
+box,0mm,17mm,177mm,119mm,line_width=2
+multi_lines,0mm,24mm,177mm,0,16,0,7mm
+line,19mm,136mm,0,-119mm
+line,31mm,136mm,0,-119mm
+string,8mm,134mm,年,font_size=9
+string,24mm,134mm,月,font_size=9
+string,77mm,134mm,学歴・職歴（各項目ごとにまとめて書く）,font_size=9
+education_experience,128mm,3mm,24mm,35mm,7mm,95mm,155mm,font_size=12
+string,1mm,14mm,記入上の注意,font_size=9
+string,22mm,14mm,数字はアラビア数字で、文字はくずさず正確に書く。,font_size=9
+new_page
+box,0,190mm,177mm,49mm,line_width=2
+line,19mm,239mm,0,-49mm
+line,31mm,239mm,0,-49mm
+multi_lines,0mm,232mm,177mm,0,6,0,-7mm
+string,8mm,237mm,年,font_size=9
+string,24mm,237mm,月,font_size=9
+string,90mm,237mm,免許・資格,font_size=9
+history,230mm,3mm,24mm,35mm,-7mm,$licences,font_size=12
+box,0,167mm,177mm,15mm,line_width=2
+string,2mm,180mm,通勤時間,font_size=9
+string,5mm,173mm,$commuting_time,font_size=12
+string,59mm,180mm,扶養家族,font_size=9
+string,59mm,173mm,(配偶者を除く),font_size=9
+string,85mm,173mm,$dependents,font_size=12
+string,99mm,180mm,配偶者,font_size=9
+string,116mm,173mm,$spouse,font_size=12
+string,139mm,180mm,配偶者の扶養義務,font_size=9
+string,155mm,173mm,$supporting_spouse,font_size=12
+line,57mm,167mm,0,15mm
+line,97mm,167mm,0,15mm
+line,137mm,167mm,0,15mm
+box,0,120mm,177mm,40mm,line_width=2
+string,2mm,158mm,趣味・特技,font_size=9
+textbox,2mm,152mm,173mm,30mm,$hobby,font_size=13
+box,0,73mm,177mm,40mm,line_width=2
+string,2mm,111mm,志望動機,font_size=9
+textbox,2mm,105mm,173mm,30mm,$motivation,font_size=13
+box,0,26mm,177mm,40mm,line_width=2
+string,2mm,64mm,本人希望記入欄,font_size=9
+textbox,2mm,58mm,173mm,30mm,$request,font_size=13

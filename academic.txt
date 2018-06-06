@@ -1,0 +1,122 @@
+# ヘッダー
+string,5mm,247mm,履　歴　書,font_size=14,font_face=gothic
+string,110mm,245mm,$date,font_size=9
+
+# 住所・連絡先等
+box,145mm,204mm,30mm,40mm,line_style=dashed
+string,148mm,240mm,写真を貼る位置,font_size=9
+string,147mm,233mm,1. 縦36〜40 mm,font_size=8
+string,150mm,230mm,横24〜30 mm,font_size=8
+string,147mm,227mm,2. 本人単身胸から上,font_size=8
+string,147mm,224mm,3. 裏面にのりづけ,font_size=8
+string,147mm,221mm,4. 裏面に氏名記入,font_size=8
+photo,145mm,244mm,30mm,40mm
+lines,6,0mm,240mm,139mm,0mm,0mm,-41mm,38mm,0mm,0mm,-36mm,-177mm,0mm,line_width=2.0,close=true
+line,0,233mm,139mm,0,line_style=dashed
+string,2mm,238mm,ふりがな,font_size=9
+string,30mm,238mm,$name_kana,font_size=9
+string,2mm,231mm,氏　　名,font_size=9
+string,30mm,231mm,$name,font_size=14
+line,0,218mm,139mm,0mm
+line,15mm,218mm,0,-13mm
+string,1.5mm,217mm,生年月日,font_size=9
+string,30mm,213mm,$birth_day,font_size=12
+line,110mm,218mm,0mm,-13mm
+string,121mm,214mm,$gender,font_size=12
+line,21mm,205mm,0,-6mm,line_style=dashed
+string,1.5mm,203.5mm,携帯電話番号,font_size=9
+line,0,205mm,139mm,0mm
+string,25mm,203.5mm,$cell_phone,font_size=9
+line,56mm,205mm,0mm,-6mm
+line,69mm,205mm,0mm,-6mm,line_style=dashed
+string,57mm,204mm,E-MAIL,font_size=9
+string,75mm,204mm,$email,font_size=9
+line,0,205mm,139mm,0mm
+line,0,199mm,139mm,0mm
+line,0,194mm,139mm,0,line_style=dashed
+line,0,181mm,177mm,0
+line,0,176mm,139mm,0,line_style=dashed
+line,139mm,199mm,0mm,-36mm
+string,141mm,198mm,電話,font_size=9
+string,143mm,190mm,$tel,font_size=9
+string,141mm,180mm,電話,font_size=9
+string,143mm,172mm,$tel2,font_size=9
+string,2mm,198mm,ふりがな,font_size=8
+string,20mm,198mm,$address_kana,font_size=8
+string,2mm,193mm,現住所 〒,font_size=8
+string,15mm,193mm,$address_zip,font_size=8
+string,15mm,188mm,$address,font_size=12
+string,2mm,180mm,ふりがな,font_size=8
+string,20mm,180mm,$address_kana2,font_size=8
+string,2mm,175mm,連絡先 〒,font_size=9
+string,15mm,175mm,$address_zip2,font_size=9
+string,15mm,169mm,$address2,font_size=12
+
+# 所属学会・学位論文など
+box,0mm,137mm,177mm,24mm,line_width=2
+line,0mm,145mm,177mm,0mm
+line,0mm,153mm,177mm,0mm
+line,25mm,137mm,0mm,24mm
+line,88mm,153mm,0mm,8mm
+line,113mm,153mm,0mm,8mm
+
+string,4mm,159mm,博士学位
+string,92mm,159mm,取得年度
+string,4mm,151mm,授与機関
+string,4mm,143mm,学位論文
+string,26mm,159mm,$degree
+string,117mm,159mm,$degree_year
+string,26mm,151mm,$degree_affiliation
+string,26mm,143mm,$thesis_title,font_face=Times-Roman
+
+# 学歴・職歴
+box,0mm,9mm,177mm,126mm,line_width=2
+multi_lines,0mm,16mm,177mm,0,17,0,7mm
+line,19mm,135mm,0,-126mm,line_style=dashed
+line,31mm,135mm,0,-126mm
+string,8mm,133mm,年,font_size=9
+string,24mm,133mm,月,font_size=9
+string,77mm,133mm,学歴・職歴（各項目ごとにまとめて書く）,font_size=9
+education_experience,127mm,3mm,24mm,35mm,7mm,95mm,155mm,font_size=12
+
+# 2ページ目
+new_page
+
+# 免許・資格
+box,0,190mm,177mm,49mm,line_width=2
+line,19mm,239mm,0,-49mm,line_style=dashed
+line,31mm,239mm,0,-49mm
+multi_lines,0mm,232mm,177mm,0,6,0,-7mm
+string,8mm,237mm,年,font_size=9
+string,24mm,237mm,月,font_size=9
+string,90mm,237mm,免許・資格,font_size=9
+history,230mm,3mm,24mm,35mm,-7mm,$licences,font_size=12
+
+# 主な受賞・表彰等
+box,0,138mm,177mm,49mm,line_width=2
+line,19mm,187mm,0,-49mm,line_style=dashed
+line,31mm,187mm,0,-49mm
+multi_lines,0mm,180mm,177mm,0,6,0,-7mm
+string,8mm,185mm,年,font_size=9
+string,24mm,185mm,月,font_size=9
+string,86mm,185mm,主な受賞・表彰等,font_size=9
+history,178mm,3mm,24mm,35mm,-7mm,$awards,font_size=12
+
+# 所属学会等
+box,0,86mm,177mm,49mm,line_width=2
+string,76mm,133mm,所属学会等,font_size=9
+line,0,128mm,177mm,0
+textbox,3,127mm,175mm,40mm,$affiliated_society
+
+# その他特記事項 
+box,0,48mm,177mm,35mm,line_width=2
+line,0,76mm,177mm,0
+string,76mm,81mm,その他特記事項,font_size=9
+textbox,3,75mm,175mm,26mm,$notices
+
+# 署名欄
+string,113mm,36mm,上記のとおり相違ありません。
+string,140mm,24mm,年　　月　　日
+string,165mm,12mm,印
+string,85mm,12mm,氏名
+line,80mm,5mm,90mm,0

@@ -1,0 +1,140 @@
+# 名前等
+date: 2018年 6月 5日現在
+name_kana: りれきしょ　かくたろう
+name: 履歴書　書太郎
+birth_day: 1543年1月31日 (満 73 歳)
+gender: 男
+cell_phone: 090-1234-5678
+email: hoge@hogehoge.org
+photo: photo.jpg
+
+# 住所
+address_kana: とうきょうとちよだくちよだ
+address: 東京都千代田区千代田1-1-1
+address_zip: 100-0001
+tel: 0120-000-XXX
+fax: 0120-111-XXX
+# 連絡先
+address_kana2: ほっかいどう わっかないし そうやみさき
+address2: 北海道稚内市宗谷岬
+address_zip2: 098-6758
+tel2: 0120-222-XXX
+fax2: 0120-333-XXX
+
+# 学位
+degree: 博士(工学)
+# 学位取得年度
+degree_year: 20XX年度
+# 学位授与機関
+degree_affiliation: 履歴書大学
+# 学位論文
+thesis_title: How to write a resume without a spreadsheet
+
+
+# 学歴
+education:
+  - 
+    year: 20XX
+    month: 4
+    value: 履歴書大学履歴書学部 入学
+  - 
+    year: 20XX
+    month: 3
+    value: 同 卒業
+  - 
+    year: 20XX
+    month: 4
+    value: 履歴書大学履歴書研究科履歴書専攻博士前期課程 入学
+  - 
+    year: 20XX
+    month: 3
+    value: 同 修了
+  - 
+    year: 20XX
+    month: 4
+    value: 履歴書大学履歴書研究科履歴書専攻博士後期課程 入学
+  - 
+    year: 20XX
+    month: 3
+    value: 同 修了
+
+
+
+#職歴
+experience:
+  - 
+    year: 20XX
+    month: 4
+    value: 株式会社履歴書入社
+  - 
+    year: 20XX
+    month: 10
+    value: 株式会社履歴書退職
+  - 
+    year: 20XX
+    month: 10
+    value: 株式会社XXX 入社
+  - 
+    value: 現在にいたる
+
+# 免許・資格
+licences:
+  - 
+    year: 19XX
+    month: 11
+    value: 普通自動車免許
+  - 
+    year: 20XX
+    month: 11
+    value: 履歴書検定1級
+
+
+# 主な受賞・表彰等
+awards:
+  - 
+    year: 20XX
+    month: 
+    value: 第二回履歴書学会ポスター賞
+  - 
+    year: 20XX
+    month: 
+    value: 第五回履歴書学会若手奨励賞
+
+# 所属学会
+affiliated_society: |
+  日本履歴書学会
+  神エクセル研究会
+
+# その他特記事項
+notices: |
+  着任可能時期： 20XX年4月1日
+  希望職位： 助教
+
+#通勤時間
+commuting_time:  1時間20分
+
+#扶養家族数(配偶者を除く)
+dependents: ２人
+
+#配偶者の有無
+spouse: 有
+
+#配偶者の扶養義務
+supporting_spouse: 有
+
+#趣味
+hobby: |
+  趣味はコンパイラいじめです。
+  特技は素手でMOをフォーマットできます。
+  ちくわ大明神。
+
+#志望動機
+motivation: |
+  遊ぶ金欲しさ
+
+# 本人希望記入欄
+request: |
+  5000兆円欲しい。
+  5000兆FLOPSも欲しい。
+  5000兆プロセスも欲しい。
+  でもスレッドはそんなにたくさんいらない。 
