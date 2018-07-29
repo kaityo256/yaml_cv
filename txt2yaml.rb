@@ -1,6 +1,20 @@
 require "yaml"
 
 module TXT2YAML
+  DPI = 75
+
+  def size(s)
+    if s =~ /\s*(\-?[0-9\.]+)\s*mm/
+      $1.to_f / 25.4 * DPI
+    elsif s =~ /\s*(-?[0-9\.]+)\s*cm/
+      $1.to_f / 25.4 * DPI * 10
+    elsif s =~ /\s*(-?[0-9\.]+)\s*px/
+      $1.to_f
+    else
+      s.to_f
+    end
+  end
+
   def rest(a, h)
     a.each do |v|
       b = v.split(/=/)
@@ -111,6 +125,46 @@ module TXT2YAML
     h
   end
 
+  def ymbox(a)
+    a.shift
+    name = a.shift
+    y = size(a.shift)
+    num = a.shift.to_i
+    value = a.shift
+    h = Hash[*a.map { |v| v.split(/=/) }.flatten]
+    history_fontsize = h.fetch("font_size", 12)
+    sy = size("7mm")
+    dy = (num + 1) * sy
+    namepos = 104 - name.length * 1.7
+    r = Array.new
+    r.push box("box,0,#{y},177mm,#{dy},line_width=2".split(","))
+    r.push line("line,19mm,#{y + dy},0,#{-dy},line_style=dashed".split(","))
+    r.push line("line,31mm,#{y + dy},0,#{-dy}".split(","))
+    r.push multi_lines("multi_lines,0,#{y + dy - sy},177mm,0,#{num},0,-7mm".split(","))
+    r.push history("history,#{y + dy - sy - size("2mm")},3mm,24mm,35mm,-7mm,#{value},font_size=#{history_fontsize}".split(","))
+    r.push string("string,8mm,#{y + dy - size("2mm")},年,font_size=9".split(","))
+    r.push string("string,24mm,#{y + dy - size("2mm")},月,font_size=9".split(","))
+    r.push string("string,#{namepos}mm,#{y + dy - size("2mm")},#{name},font_size=9".split(","))
+    return r
+  end
+
+  def miscbox(a)
+    a.shift
+    name = a.shift
+    y = size(a.shift)
+    height = size(a.shift)
+    value = a.shift
+    h = Hash[*a.map { |v| v.split(/=/) }.flatten]
+    textbox_fontsize = h.fetch("font_size", 12)
+    namepos = size((88.5 - name.length * 1.7).to_s + "mm")
+    r = Array.new
+    r.push string("string,#{namepos},#{y + height - size("2mm")},#{name},font_size=9".split(","))
+    r.push line("line,0,#{y + height - size("7mm")},177mm,0".split(","))
+    r.push textbox("textbox,2mm,#{y + height - size("9mm")},175mm,#{height - size("9mm")},#{value},font_size=#{textbox_fontsize}".split(","))
+    r.push box("box,0,#{y},177mm,#{height},line_width=2".split(","))
+    r
+  end
+
   def textbox(a)
     h = Hash.new
     h["type"] = a.shift
@@ -131,7 +185,12 @@ module TXT2YAML
         next if line.chomp == ""
         a = line.chomp.split(/,/)
         d = send(a[0], a)
-        data.push d if d != nil
+        next if d == nil
+        if d.kind_of?(Array)
+          data = data + d
+        else
+          data.push d
+        end
       end
     end
     data
