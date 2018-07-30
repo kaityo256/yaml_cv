@@ -91,14 +91,20 @@ licences:
 
 # 主な受賞・表彰等
 awards:
-  - 
+  -
     year: 20XX
     month: 
     value: 第二回履歴書学会ポスター賞
-  - 
+  -
     year: 20XX
     month: 
     value: 第五回履歴書学会若手奨励賞
+
+# 教育歴
+teaching: |
+  「履歴書学特論」平成15年から17年まで
+  「PDF出力特論」平成18年から23年まで
+  「スタイルファイル特別演習」平成20年から29年まで
 
 # 所属学会
 affiliated_society: |

@@ -21,7 +21,7 @@ Prawnから日本語を出力するためにIPAexフォントを使っていま�
 
 ## 使い方
 
-以下のように、`-i`に続けてデータファイル、`-s`に続けてスタイルファイル、`-o`に続けて出力ファイルを指定します。省略した場合のデフォルトはそれぞれ`data.yaml`、`style.yaml`、`output.pdf`です。
+以下のように、`-i`に続けてデータファイル、`-s`に続けてスタイルファイル、`-o`に続けて出力ファイルを指定します。省略した場合のデフォルトはそれぞれ`data.yaml`、`style.txt`、`output.pdf`です。
 
 ```
 $ ruby make_cv -h
@@ -31,10 +31,10 @@ Usage: make_cv [options]
     -o, --output [output]
 ```
 
-YAML形式のデータファイル(例:`data.yaml`)とスタイルファイル(例:`style.yaml`)を用意し、スクリプトを以下のように実行します。
+YAML形式のデータファイル(例:`data.yaml`)とスタイルファイル(例:`style.txt`)を用意し、スクリプトを以下のように実行します。
 
 ```
-$ ruby make_cv -i data.yaml -s style.yaml -o output.pdf
+$ ruby make_cv -i data.yaml -s style.txt -o output.pdf
 ```
 
 添付のサンプルでは以下のような出力が得られます。
@@ -104,9 +104,9 @@ photo: photo.jpg
 
 のような出力になります。
 
-## スタイルファイル(テキスト形式)
+## スタイルファイル
 
-履歴書のスタイルファイルは、YAML形式とTXT形式の二種類があります。テキスト形式では、線は文字列などを、一行に一要素ずつ記述していきます。例えば`academic.txt`は以下のような内容になっています。
+履歴書のスタイルファイルは、一行に一要素ずつ記述していきます。例えば`academic.txt`は以下のような内容になっています。
 
 ```
 # ヘッダー
@@ -168,12 +168,14 @@ photo  |photo, x, y, width, height   |  指定位置、サイズに写真ファ�
 new_page  |new_page   |  改ページ
 textbox  |textbox,x,y,width,height,value[,font options] |指定位置、サイズにテキストボックスを描画  
 multi_lines| multi_lines, x,y,dx,dy,num,sx,sy| (x,y)から、(dx,dy)方向に、毎回(sx,sy)だけ座標をずらしながらnum回線を引きます
+ymbox| ymbox,title,height,num,$value | $valueをhistoryデータとして、高さyに、年月表を作るマクロです。
+miscbox| miscbox,title,y,height,$value | タイトル付きテキストボックスです。$valueの内容をテキストボックス内に展開します。
 
 ### 特別な命令
 
 #### history
 
-年、月、内容をともなったデータを描画する命令です。
+年、月、内容をともなったデータを描画する命令です。ymboxやmiscboxの内部で呼ばれます。
 
 ```
 history, y, year_x, month_x, value_x, dy, value[,font options]
@@ -226,9 +228,70 @@ lines, num, x,y, dx, dy, ..., [,line options]
 
 最初に「何個の点データがあるか」を`num`で指定します。その後、始点、次の点の相対座標・・・と続け、最後に線のオプションを指定します。なお、この命令だけのオプションとして「close」というものがあります。これを指定すると最後に線を閉じます。
 
+#### ymbox
+
+「年、月、事柄」を書くマクロです。例えば
+
+```
+ymbox,免許・資格,204mm,4,$licences
+```
+
+は、「免許・資格」というタイトルの4行分の年月ボックスを、高さ204mmのところに配置する、という意味です。最後がデータのYAMLファイルの対応するレコードです。例えば、
+
+```yaml
+# 免許・資格
+licences:
+  - 
+    year: 19XX
+    month: 11
+    value: 普通自動車免許
+  - 
+    year: 20XX
+    month: 11
+    value: 履歴書検定1級
+```
+
+というデータだったとすると、
+
+![sample/licenses.png](sample/licenses.png)
+
+に展開されます。
+
+```
+ymbox,免許・資格,204mm,4,$licences,font_size=9
+```
+
+などのように、最後にフォントサイズを指定できます。
+
+#### miscbox
+
+タイトル付きのテキストボックスに展開されるマクロです。例えば、
+
+```
+miscbox,教育歴,120mm,50mm,$teaching,font_size=12
+```
+
+は、「教育歴」というタイトルの高さ(height)50mmのテキストボックスを、高さ(y座標)120mmのところに配置する、という意味です。最後のフォントサイズ指定は任意です。対応するYAMLレコードは\$teachingです。
+
+例えば
+
+```yaml
+# 教育歴
+teaching: |
+  「履歴書学特論」平成15年から17年まで
+  「PDF出力特論」平成18年から23年まで
+  「スタイルファイル特別演習」平成20年から29年まで
+```
+
+というデータだったとすると、
+
+![sample/teaching.png](sample/teaching.png)
+
+に展開されます。
+
 ## スタイルファイル(YAML形式)
 
-スタイルファイルはYAML形式でも書くことができますが、実際やってみたら死ぬほど面倒だったので、通常は(そんな奇特な人がいるとしても)テキストで書くことになろうかと思います。テキスト形式のスタイルファイルは`txt2yaml.rb`でYAML形式に変換できます。
+上記のテキスト形式で書かれたスタイルファイルは内部的にYAMLに変換されて処理されているため、スタイルファイルはYAML形式でも書くことができます。・・・が、実際やってみたら死ぬほど面倒だったので、通常はテキスト形式で書くことになろうかと思います。テキスト形式のスタイルファイルは`txt2yaml.rb`でYAML形式に変換できます。
 
 例えば
 
@@ -260,3 +323,9 @@ string,110mm,245mm,$date,font_size=9
 ## 参考
 
 このスクリプトは、[PruneMazui](https://github.com/PruneMazui)さんの[resume-maker](https://github.com/PruneMazui/resume-maker)に影響されて開発したものです。
+
+
+## 履歴
+
+- 2018年7月30日 ymboxマクロ及びmiscboxマクロを追加
+- 2018年6月6日 リリース

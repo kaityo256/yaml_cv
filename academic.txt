@@ -79,40 +79,14 @@ string,24mm,133mm,月,font_size=9
 string,77mm,133mm,学歴・職歴（各項目ごとにまとめて書く）,font_size=9
 education_experience,127mm,3mm,24mm,35mm,7mm,95mm,155mm,font_size=12
 
+
 # 2ページ目
 new_page
-
-# 免許・資格
-box,0,190mm,177mm,49mm,line_width=2
-line,19mm,239mm,0,-49mm,line_style=dashed
-line,31mm,239mm,0,-49mm
-multi_lines,0mm,232mm,177mm,0,6,0,-7mm
-string,8mm,237mm,年,font_size=9
-string,24mm,237mm,月,font_size=9
-string,90mm,237mm,免許・資格,font_size=9
-history,230mm,3mm,24mm,35mm,-7mm,$licences,font_size=12
-
-# 主な受賞・表彰等
-box,0,138mm,177mm,49mm,line_width=2
-line,19mm,187mm,0,-49mm,line_style=dashed
-line,31mm,187mm,0,-49mm
-multi_lines,0mm,180mm,177mm,0,6,0,-7mm
-string,8mm,185mm,年,font_size=9
-string,24mm,185mm,月,font_size=9
-string,86mm,185mm,主な受賞・表彰等,font_size=9
-history,178mm,3mm,24mm,35mm,-7mm,$awards,font_size=12
-
-# 所属学会等
-box,0,86mm,177mm,49mm,line_width=2
-string,76mm,133mm,所属学会等,font_size=9
-line,0,128mm,177mm,0
-textbox,3,127mm,175mm,40mm,$affiliated_society
-
-# その他特記事項 
-box,0,48mm,177mm,35mm,line_width=2
-line,0,76mm,177mm,0
-string,76mm,81mm,その他特記事項,font_size=9
-textbox,3,75mm,175mm,26mm,$notices
+ymbox,免許・資格,204mm,4,$licences
+ymbox,主な受賞・表彰等,173mm,3,$awards
+miscbox,教育歴,120mm,50mm,$teaching,font_size=12
+miscbox,所属学会等,84mm,33mm,$affiliated_society
+miscbox,その他特記事項,55mm,26mm,$notices,font_size=12
 
 # 署名欄
 string,113mm,36mm,上記のとおり相違ありません。
