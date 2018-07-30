@@ -311,7 +311,7 @@ check_fonts
 
 args = parse_option
 input_file = args.fetch(:input, "data.yaml")
-style_file = args.fetch(:style, "style.yaml")
+style_file = args.fetch(:style, "style.txt")
 output_file = args.fetch(:output, "output.pdf")
 
 CVMaker.new.generate(input_file, style_file, output_file)
