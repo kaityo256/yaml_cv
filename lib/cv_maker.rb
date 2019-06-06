@@ -1,6 +1,7 @@
 # coding: utf-8
 # require "optparse"
 require "prawn"
+require "open-uri"
 require "yaml"
 require "./lib/txt2yaml"
 
@@ -77,6 +78,9 @@ class CVMaker
     width = size(h["width"])
     height = size(h["height"])
     file = @data["photo"]
+    unless file.strip !~ /^https?|^ftp\:\/\//
+      file = open(file).path
+    end
     @doc.image(file, :at => [x, y], :width => width, :height => height)
   end
 
