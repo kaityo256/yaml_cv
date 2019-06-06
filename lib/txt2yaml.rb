@@ -177,23 +177,26 @@ module TXT2YAML
     h
   end
 
-  def convert(filename)
+  def convert(style_txt)
     data = []
-    open(filename) do |f|
-      while line = f.gets
-        next if line =~ /^#/
-        next if line.chomp == ""
-        a = line.chomp.split(/,/)
-        d = send(a[0], a)
-        next if d == nil
-        if d.kind_of?(Array)
-          data = data + d
-        else
-          data.push d
-        end
+    style_txt.lines.each do |line|
+      next if line =~ /^#/
+      next if line.chomp == ""
+      a = line.chomp.split(/,/)
+      d = send(a[0], a)
+      next if d == nil
+      if d.kind_of?(Array)
+        data = data + d
+      else
+        data.push d
       end
     end
     data
+  end
+
+  def load(file_path)
+    style_txt = File.read(file_path)
+    convert(style_txt)
   end
 end
 
