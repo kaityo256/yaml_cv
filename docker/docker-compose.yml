@@ -1,0 +1,9 @@
+version: '3.5'
+services:
+  yaml_2_resume:
+    container_name: yaml_2_resume
+    build: .
+    ports:
+      - 14567:4567
+    working_dir: /usr/src/app
+    command: ruby app.rb -o 0.0.0.0 -p 4567
