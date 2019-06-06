@@ -16,7 +16,8 @@
           } else {
             let fileName = file.name
             if (fileName.length > 10) {
-              fileName = '...' + fileName.substr(10)
+              const l = fileName.length
+              fileName = '...' + fileName.substring(l - 10, l)
             }
             $('#photoBtn').text(fileName)
           }
