@@ -13,6 +13,20 @@ get '/' do
   erb :index
 end
 
+post '/create' do
+  @data_yml = params[:data_yml]
+  @style_txt = params[:style_txt]
+  if !params[:photo].nil?
+    @photo = params[:photo][:tempfile]
+  end
+  p "++AAAAAAAAAAA" 
+  p @data_yml
+  p @style_txt
+  p @photo
+  p "--AAAAAAAAAAA"
+  'OK'
+end
+
 private
 
   def load_as_erb(file_path)
