@@ -1,12 +1,12 @@
 # coding: utf-8
-require 'date'
-require 'wareki'
-require 'erb'
 require 'sinatra'
 require 'sinatra/reloader' if development?
 
 require './lib/cv_maker'
 require './lib/txt2yaml'
+require './lib/util'
+
+include Util
 
 get '/' do
   @title = "YAML to 履歴書"
@@ -35,9 +35,3 @@ post '/create' do
     return 'Error'
   end
 end
-
-private
-
-  def load_as_erb(file_path)
-    ERB.new(File.read(file_path)).result(binding)
-  end
