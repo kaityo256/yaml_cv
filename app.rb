@@ -8,8 +8,8 @@ require "sinatra/reloader" if development?
 get '/' do
   @title = "YAML to 履歴書"
   @date = Date.today
-  @data_yml = load_as_erb("public/data.yaml")
-  @style_txt = load_as_erb("public/style.txt")
+  @data_yml = load_as_erb("templates/data.yaml")
+  @style_txt = load_as_erb("templates/style.txt")
   erb :index
 end
 
