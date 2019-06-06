@@ -12,5 +12,6 @@ gem 'sinatra-contrib', group: :development
 
 group :development, :test do
   gem 'rspec'
+  gem 'simplecov'
   gem 'rack-test'
 end
