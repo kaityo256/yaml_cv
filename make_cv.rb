@@ -2,8 +2,12 @@
 require "optparse"
 require "prawn"
 require "yaml"
+
 require './lib/cv_maker'
 require './lib/txt2yaml'
+require './lib/util'
+
+include Util
 
 def parse_option
   args = {}
@@ -39,11 +43,12 @@ EOS
 end
 
 def cerate_pdf(input_file, style_file, output_file)
-  @data = YAML.load_file(input_file)
+  @date = Date.today
+  @data = YAML.load(load_as_erb(input_file))
   if style_file =~ /\.txt$/
-    @style = TXT2YAMLConverter.new.load(style_file)
+    @style = TXT2YAMLConverter.new.convert(load_as_erb(style_file))
   else
-    @style = YAML.load_file(style_file)
+    @style = YAML.load(load_as_erb(style_file))
   end
 
   puts "input  file: #{input_file}"
@@ -58,8 +63,8 @@ end
 check_fonts
 
 args = parse_option
-input_file = args.fetch(:input, "data.yaml")
-style_file = args.fetch(:style, "style.txt")
+input_file = args.fetch(:input, "templates/data.yaml")
+style_file = args.fetch(:style, "templates/style.txt")
 output_file = args.fetch(:output, "output.pdf")
 
 cerate_pdf(input_file, style_file, output_file)

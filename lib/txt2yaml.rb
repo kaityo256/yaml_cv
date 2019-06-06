@@ -194,7 +194,7 @@ module TXT2YAML
     data
   end
 
-  def load(file_path)
+  def load_file(file_path)
     style_txt = File.read(file_path)
     convert(style_txt)
   end

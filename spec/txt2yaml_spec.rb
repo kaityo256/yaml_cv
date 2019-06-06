@@ -6,12 +6,12 @@ describe "TXT2YAMLConverter" do
   end
 
   it "should convert style.txt to style array" do
-    style = @converter.load('style.txt')
+    style = @converter.load_file('templates/style.txt')
     expect(style.size).to be > 0
   end
 
   it "should convert academic.txt to style array" do
-    style = @converter.load('academic.txt')
+    style = @converter.load_file('templates/academic.txt')
     expect(style.size).to be > 0
   end
 end
