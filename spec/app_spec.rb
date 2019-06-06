@@ -1,5 +1,5 @@
 # require File.expand_path '../spec_helper.rb', __FILE__
-require File.expand_path '../../app.rb', __FILE__
+require './app.rb'
 
 describe "Sinatra Application" do
   it "should allow accessing the home page" do
