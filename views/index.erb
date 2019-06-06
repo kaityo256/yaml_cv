@@ -1,0 +1,42 @@
+<main>
+  <div class="container main-container">
+    <form action="/create" method="post" enctype="multipart/form-data">
+      <div class="columns">
+        <div class="column">
+          <label class="label is-medium">
+            Data.yml&nbsp;&nbsp;
+            <a href="https://qiita.com/kaityo256/items/e3884d0109223c324baf"
+              class="button is-small is-info is-outlined" target="_blank">
+              書式
+            </a>
+            <span class="is-pulled-right">
+              <button class="button is-small is-primary is-outlined" id="photoBtn" type="button">写真をアップ</button>
+              <input type="file" class="photo-area" id="photoInput"
+                name="photo" accept="image/*" capture="camera">
+            </span>
+          </label>
+          <div class="control">
+            <textarea class="textarea" name="data_yml"
+              placeholder="data.yml" rows="15"><%= @data_yml %></textarea>
+          </div>
+        </div>
+        <div class="column">
+          <label class="label is-medium">
+            Style.txt&nbsp;&nbsp;
+            <a href="https://qiita.com/kaityo256/items/e3884d0109223c324baf"
+              class="button is-small is-info is-outlined" target="_blank">
+              書式
+            </a>
+          </label>
+          <div class="control">
+            <textarea class="textarea" name="style_txt"
+              placeholder="style.txt" rows="15"><%= @style_txt %></textarea>
+          </div>
+        </div>
+      </div>
+      <button class="button is-large is-primary is-fullwidth" type="submit">
+        <strong>送&nbsp;&nbsp;&nbsp;&nbsp;信</strong>
+      </button>
+    </form>
+  </div>
+</main>

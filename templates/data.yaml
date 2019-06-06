@@ -1,0 +1,95 @@
+# 名前等
+date: <%= @date.strftime("%Jf") %>現在
+name_kana: りれき　たろう
+name: 履歴　太郎
+birth_day: <%= (@date << 25 * 12).strftime("%Jf") %> (満 25 歳)
+gender: 男
+cell_phone: 090-1234-5678
+email: rireki-taro@example.org
+# 写真をアップロードした場合、このフィールドが無視されます
+photo: https://cdn.jsdelivr.net/gh/jerrywdlee/yaml_cv@master/photo.jpg
+
+# 住所
+address_kana: とうきょうとちよだくちよだ
+address: 東京都千代田区千代田1-1-1
+address_zip: 100-0001
+tel: 03-000-000
+# fax: 0120-111-XXX
+# 連絡先
+# address_kana2: ほっかいどう わっかないし そうやみさき
+# address2: 北海道稚内市宗谷岬
+# address_zip2: 098-6758
+# tel2: 0120-222-XXX
+# fax2: 0120-333-XXX
+address2: 同上
+
+# 学歴
+education:
+  - 
+    year: <%= (@date << 10 * 12).strftime("%Jy") %>
+    month: 4
+    value: 履歴高校普通科　入学
+  - 
+    year: <%= (@date << 7 * 12).strftime("%Jy") %>
+    month: 3
+    value: 同　卒業
+  - 
+    year: <%= (@date << 7 * 12).strftime("%Jy") %>
+    month: 4
+    value: 履歴大学履歴書学部　入学
+  - 
+    year: <%= (@date << 3 * 12).strftime("%Jy") %>
+    month: 3
+    value: 同　卒業
+
+#職歴
+experience:
+  - 
+    year: <%= (@date << 3 * 12).strftime("%Jy") %>
+    month: 4
+    value: 株式会社履歴書　入社
+  - 
+    year: <%= (@date << 1 * 12).strftime("%Jy") %>
+    month: 10
+    value: 株式会社履歴書　退職
+  - 
+    year: <%= (@date << 1 * 12).strftime("%Jy") %>
+    month: 11
+    value: 株式会社XXX 入社
+  - 
+    value: 現在にいたる
+
+# 免許・資格
+licences:
+  - 
+    year: <%= (@date << 7 * 12).strftime("%Jy") %>
+    month: 4
+    value: 普通自動車免許
+  - 
+    year: <%= (@date << 7 * 12).strftime("%Jy") %>
+    month: 11
+    value: 英検準1級
+
+#通勤時間
+commuting_time:  1時間20分
+
+#扶養家族数(配偶者を除く)
+dependents: 0人
+
+#配偶者の有無
+spouse: なし
+
+#配偶者の扶養義務
+supporting_spouse: なし
+
+#趣味
+hobby: |
+  読書、音楽鑑賞
+
+#志望動機
+motivation: |
+  貴社の事業に共感を持ち、是非ご一緒に働きたいと思います。
+
+# 本人希望記入欄
+request: |
+  貴社の規定に従います。

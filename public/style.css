@@ -1,0 +1,13 @@
+.main-container {
+  padding: 3em;
+}
+
+.photo-area {
+  display: none;
+}
+
+@media screen and (max-width: 1023px) {
+  .main-container {
+    padding: 1em;
+  }
+}
