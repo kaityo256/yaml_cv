@@ -30,7 +30,7 @@ post '/create' do
     content_type 'application/pdf'
     @doc.render
   rescue => exception
-    puts exception
+    p exception
     status 403
     return 'Error'
   end
