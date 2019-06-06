@@ -1,5 +1,6 @@
 # coding: utf-8
 require 'date'
+require 'wareki'
 require 'erb'
 require 'sinatra'
 require "sinatra/reloader" if development?

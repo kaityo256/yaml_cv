@@ -1,5 +1,5 @@
 # 名前等
-date: <%= @date.strftime("%Y年%-m月%-d日") %>現在
+date: <%= @date.strftime("%Jf") %>現在
 name_kana: りれきしょ　かくたろう
 name: 履歴書　書太郎
 birth_day: 1543年1月31日 (満 73 歳)
