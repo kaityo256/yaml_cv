@@ -91,7 +91,7 @@ class CVMaker
     y = size(h["y"])
     str = get_value(h)
     font_size, font_face = get_font(h)
-    w = font_size * str.size
+    w = font_size * str.to_s.size
     h = font_size
     @doc.bounding_box([x, y], :width => w, :height => h) do
       @doc.font_size font_size
