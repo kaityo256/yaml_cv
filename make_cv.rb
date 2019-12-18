@@ -2,7 +2,7 @@
 require "optparse"
 require "prawn"
 require "yaml"
-require "./txt2yaml"
+require_relative "txt2yaml"
 
 $font_faces = Hash.new
 $font_faces["mincho"] = "fonts/ipaexm.ttf"
