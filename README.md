@@ -1,29 +1,38 @@
-YAMLによる履歴書作成スクリプト
-===
+# YAMLによる履歴書作成スクリプト
 
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 YAML形式で書かれたデータファイルと、YAMLもしくはテキストファイル形式で書かれたスタイルから履歴書PDFファイルを作成するRubyスクリプトです。
 
-## 必要なライブラリ等
+## 使い方
+
+### 簡単な使用方法
+
+[ikasam](https://github.com/ikasam)さんが、[Dockerを使う実行環境](https://github.com/ikasam/docker-yaml_cv)を作ってくださっています。Docker環境がある方はいろいろインストールしなくても`git clone`して`docker-compose up`するだけでPDFが作成されるので便利です。
+
+また[jerrywdlee](https://github.com/jerrywdlee)さんが、[YAML to 履歴書](https://yaml-2-resume.herokuapp.com/)というウェブサービスを公開されています。そちらだとブラウザだけあれば履歴書PDFが作成できて便利です。
+
+### 必要なライブラリ等
+
+このリポジトリを利用して、ローカルで運用するためには、Rubyの実行環境と以下のライブラリ、フォントが必要になります。
 
 * Prawn
 * IAPexフォント
 
 Prawnから日本語を出力するためにIPAexフォントを使っています。スクリプトと同じ場所にfontsディレクトリを用意して、[ここ](https://ipafont.ipa.go.jp/node26)からフォントをダウンロードして以下のように配置してください。
 
-```
+```txt
 ├── fonts
 │   ├── ipaexg.ttf
 │   └── ipaexm.ttf
 └── make_cv.rb
 ```
 
-## 使い方
+### 実行方法
 
 以下のように、`-i`に続けてデータファイル、`-s`に続けてスタイルファイル、`-o`に続けて出力ファイルを指定します。省略した場合のデフォルトはそれぞれ`data.yaml`、`style.txt`、`output.pdf`です。
 
-```
+```sh
 $ ruby make_cv -h
 Usage: make_cv [options]
     -i, --input [datafile]
@@ -33,8 +42,8 @@ Usage: make_cv [options]
 
 YAML形式のデータファイル(例:`data.yaml`)とスタイルファイル(例:`style.txt`)を用意し、スクリプトを以下のように実行します。
 
-```
-$ ruby make_cv -i data.yaml -s style.txt -o output.pdf
+```sh
+ruby make_cv.rb -i data.yaml -s style.txt -o output.pdf
 ```
 
 添付のサンプルでは以下のような出力が得られます。
@@ -46,8 +55,8 @@ $ ruby make_cv -i data.yaml -s style.txt -o output.pdf
 
 また、スタイルファイルを変えることで、同じデータファイルから異なる出力を得られます。以下はアカデミックポスト向けのスタイルファイル`academic.txt`を使った場合です。
 
-```
-$ ruby make_cv -i data.yaml -s academic.txt -o academic.pdf
+```sh
+ruby make_cv.rb -i data.yaml -s academic.txt -o academic.pdf
 ```
 
 [PDFファイル](sample/academic.pdf)
@@ -55,7 +64,7 @@ $ ruby make_cv -i data.yaml -s academic.txt -o academic.pdf
 ![academic1.png](sample/academic1.png)
 ![academic2.jpg](sample/academic2.png)
 
-## データの用意の仕方
+### データの用意の仕方
 
 データはYAML形式で用意します。
 
@@ -108,7 +117,7 @@ photo: photo.jpg
 
 履歴書のスタイルファイルは、一行に一要素ずつ記述していきます。例えば`academic.txt`は以下のような内容になっています。
 
-```
+```txt
 # ヘッダー
 string,5mm,247mm,履　歴　書,font_size=14,font_face=gothic
 string,110mm,245mm,$date,font_size=9
@@ -125,7 +134,7 @@ string,147mm,221mm,4. 裏面に氏名記入,font_size=8
 
 一行目の
 
-```
+```txt
 string,5mm,247mm,履　歴　書,font_size=14,font_face=gothic
 ```
 
@@ -133,7 +142,7 @@ string,5mm,247mm,履　歴　書,font_size=14,font_face=gothic
 
 次の行の
 
-```
+```txt
 string,110mm,245mm,$date,font_size=9
 ```
 
@@ -145,13 +154,13 @@ date: 2018年 6月 5日現在
 
 とあるので、
 
-```
+```txt
 string,110mm,245mm,$date,font_size=9
 ```
 
 は
 
-```
+```txt
 string,110mm,245mm,2018年 6月 5日現在,font_size=9
 ```
 
@@ -177,7 +186,7 @@ miscbox| miscbox,title,y,height,$value | タイトル付きテキストボック
 
 年、月、内容をともなったデータを描画する命令です。ymboxやmiscboxの内部で呼ばれます。
 
-```
+```txt
 history, y, year_x, month_x, value_x, dy, value[,font options]
 ```
 
@@ -206,7 +215,7 @@ licences:
 
 学歴、職歴を書く命令です。命令フォーマットは以下の通りです。
 
-```
+```txt
 education_experience, y, year_x, month_x, value_x, dy, caption_x, ijo_x, [,font options]
 ```
 
@@ -222,7 +231,7 @@ education_experience, y, year_x, month_x, value_x, dy, caption_x, ijo_x, [,font 
 
 複数の線を書く命令です。履歴書によくある右上が凹んだボックスを書くために用意してあります。命令フォーマットは以下の通りです。
 
-```
+```txt
 lines, num, x,y, dx, dy, ..., [,line options]
 ```
 
@@ -232,7 +241,7 @@ lines, num, x,y, dx, dy, ..., [,line options]
 
 「年、月、事柄」を書くマクロです。例えば
 
-```
+```txt
 ymbox,免許・資格,204mm,4,$licences
 ```
 
@@ -257,7 +266,7 @@ licences:
 
 に展開されます。
 
-```
+```txt
 ymbox,免許・資格,204mm,4,$licences,font_size=9
 ```
 
@@ -267,7 +276,7 @@ ymbox,免許・資格,204mm,4,$licences,font_size=9
 
 タイトル付きのテキストボックスに展開されるマクロです。例えば、
 
-```
+```txt
 miscbox,教育歴,120mm,50mm,$teaching,font_size=12
 ```
 
@@ -289,21 +298,20 @@ teaching: |
 
 に展開されます。
 
-## スタイルファイル(YAML形式)
+### スタイルファイル(YAML形式)
 
 上記のテキスト形式で書かれたスタイルファイルは内部的にYAMLに変換されて処理されているため、スタイルファイルはYAML形式でも書くことができます。・・・が、実際やってみたら死ぬほど面倒だったので、通常はテキスト形式で書くことになろうかと思います。テキスト形式のスタイルファイルは`txt2yaml.rb`でYAML形式に変換できます。
 
 例えば
 
-```
+```txt
 string,5mm,247mm,履　歴　書,font_size=14,font_face=gothic
 string,110mm,245mm,$date,font_size=9
 ```
 
 を`txt2yaml.rb`に食わせると、
 
-
-```YAML
+```yaml
 ---
 - type: string
   x: 5mm
@@ -324,8 +332,11 @@ string,110mm,245mm,$date,font_size=9
 
 このスクリプトは、[PruneMazui](https://github.com/PruneMazui)さんの[resume-maker](https://github.com/PruneMazui/resume-maker)に影響されて開発したものです。
 
-
 ## 履歴
 
-- 2018年7月30日 ymboxマクロ及びmiscboxマクロを追加
-- 2018年6月6日 リリース
+* 2018年7月30日 ymboxマクロ及びmiscboxマクロを追加
+* 2018年6月6日 リリース
+
+## ライセンス
+
+MIT
