@@ -1,2 +1,6 @@
 fonts
 *.pdf
+
+# Bundler
+vendor/bundle/
+.bundle/

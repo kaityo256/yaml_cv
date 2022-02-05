@@ -1,6 +1,7 @@
 # coding: utf-8
 require "optparse"
-require "prawn"
+require "bundler"
+Bundler.require
 require "yaml"
 require_relative "txt2yaml"
 
