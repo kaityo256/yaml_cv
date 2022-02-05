@@ -25,7 +25,7 @@ YAML形式で書かれたデータファイルと、YAMLもしくはテキスト
 
 PrawnはBundlerで管理しているため、以下のコマンドでインストールしてください。
 
-```shell
+```sh
 $ bundle config path vendor/bundle
 $ bundle install --without=documentation --jobs 4 --retry 3
 ```
