@@ -23,6 +23,13 @@ YAML形式で書かれたデータファイルと、YAMLもしくはテキスト
 * Prawn
 * IAPexフォント
 
+PrawnはBundlerで管理しているため、以下のコマンドでインストールしてください。
+
+```shell
+$ bundle config path vendor/bundle
+$ bundle install --without=documentation --jobs 4 --retry 3
+```
+
 Prawnから日本語を出力するためにIPAexフォントを使っています。スクリプトと同じ場所にfontsディレクトリを用意して、[ここ](https://moji.or.jp/ipafont/ipaex00401/)からフォントをダウンロードして以下のように配置してください。
 
 ```txt
