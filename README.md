@@ -30,13 +30,23 @@ $ bundle config path vendor/bundle
 $ bundle install --without=documentation --jobs 4 --retry 3
 ```
 
-Prawnから日本語を出力するためにIPAexフォントを使っています。スクリプトと同じ場所にfontsディレクトリを用意して、[ここ](https://moji.or.jp/ipafont/ipaex00401/)からフォントをダウンロードして以下のように配置してください。
+Prawnから日本語を出力するためにIPAexフォントを使っています。スクリプトと同じ場所にfontsディレクトリを用意しているので、[ここ](https://moji.or.jp/ipafont/ipaex00401/)からフォントをダウンロードして以下のように配置してください。
 
 ```txt
 ├── fonts
 │   ├── ipaexg.ttf
 │   └── ipaexm.ttf
 └── make_cv.rb
+```
+
+コマンドでIPAexフォントをダウンロードしてfontsディレクトリに配置することもできます。
+
+```sh
+$ curl -O https://moji.or.jp/wp-content/ipafont/IPAexfont/IPAexfont00401.zip
+$ unzip -o IPAexfont00401.zip
+$ mv IPAexfont00401/* fonts/
+$ rm -rf IPAexfont00401g
+$ rm -f IPAexfont00401.zip
 ```
 
 ### 実行方法
