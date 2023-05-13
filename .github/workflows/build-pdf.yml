@@ -39,7 +39,7 @@ jobs:
 
     - name: Generate PDF
       # ここのコマンド外部ファイルから読み込みたい
-      run: ruby make_cv.rb -s style.txt -o /output/output.pdf
+      run: ruby make_cv.rb -s style.txt -o output.pdf
       
     - name: Upload PDF to Release
       uses: actions/upload-release-asset@v1
@@ -47,6 +47,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./output/output.pdf
+        asset_path: output.pdf
         asset_name: output.pdf
         asset_content_type: application/pdf
