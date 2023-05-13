@@ -1,0 +1,47 @@
+name: build pdf
+on:
+  push:
+    branches:
+      - main
+ 
+permissions:
+  contents: read
+  
+jobs:
+  build-pdf:
+    name: build pdf
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7.8
+
+    - name: Install Bundler
+      run: gem install bundler
+
+    - name: Install Gems
+      run: |
+        bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3
+
+    - name: Install Prawn Gem
+      run: gem install prawn
+  
+    - name: Generate PDF
+      # ここのコマンド外部ファイルから読み込みたい
+      run: ruby make_cv.rb -s style.light.txt -o /output/output.pdf
+      
+    - name: Upload PDF to Release
+      uses: actions/upload-release-asset@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ./output/output.pdf
+        asset_name: output.pdf
+        asset_content_type: application/pdf
