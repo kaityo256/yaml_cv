@@ -37,12 +37,9 @@ jobs:
         rm -rf IPAexfont00401
         rm -f IPAexfont00401.zip
 
-    - name: test
-      run: ls
-
     - name: Generate PDF
       # ここのコマンド外部ファイルから読み込みたい
-      run: ruby make_cv.rb -s style.light.txt -o /output/output.pdf
+      run: ruby make_cv.rb -s style.txt -o /output/output.pdf
       
     - name: Upload PDF to Release
       uses: actions/upload-release-asset@v1
