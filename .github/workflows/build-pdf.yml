@@ -29,9 +29,14 @@ jobs:
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
 
-    - name: Install Prawn Gem
-      run: gem install prawn
-  
+    - name: Install Font
+      run: |
+        curl -O https://moji.or.jp/wp-content/ipafont/IPAexfont/IPAexfont00401.zip
+        unzip -o IPAexfont00401.zip
+        mv IPAexfont00401/* fonts/
+        rm -rf IPAexfont00401
+        rm -f IPAexfont00401.zip
+
     - name: Generate PDF
       # ここのコマンド外部ファイルから読み込みたい
       run: ruby make_cv.rb -s style.light.txt -o /output/output.pdf
