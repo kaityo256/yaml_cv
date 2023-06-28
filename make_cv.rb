@@ -288,12 +288,12 @@ end
 
 def check_fonts
   $font_faces.each do |k, v|
-    if !File.exists?(v)
+    if !File.exist?(v)
       puts <<EOS
 Font files are not found.
 Please download IPAex fonts via
 
-https://ipafont.ipa.go.jp/node26
+https://moji.or.jp/ipafont/
 
 and place them as 
 
