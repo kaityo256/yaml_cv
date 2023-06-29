@@ -348,7 +348,7 @@ string,110mm,245mm,$date,font_size=9
 
 ## 履歴
 
-* 2023年6月29日 Ruby 3.1 以上に対応 (Thanks fabon-f)、IPAフォントを同封するように修正
+* 2023年6月29日 Ruby 3.1 以上に対応(Thanks fabon-f)、IPAフォントを同封するように修正
 * 2018年7月30日 ymboxマクロ及びmiscboxマクロを追加
 * 2018年6月6日 リリース
 
