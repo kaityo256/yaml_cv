@@ -1,0 +1,11 @@
+name: yaml_cv
+
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - type: bind
+        source: ./
+        target: /tmp
+    command: ["make", "output.pdf"]
